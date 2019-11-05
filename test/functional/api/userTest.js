@@ -86,35 +86,35 @@ describe("User",()=> {
                 });
         });
     });
-    // describe("GET /user/:id", () => {
-    //     describe("when the id is valid", () => {
-    //         it("should return the matching user", done => {
-    //             request(server)
-    //                 .get(`/user/${validID1}`)
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .end((err, res) => {
-    //                     expect(res.body[0]).to.have.property("name", "Ada");
-    //                     expect(res.body[0]).to.have.property("pwd", "asd");
-    //                     done(err);
-    //                 });
-    //         });
-    //     });
-    //     // describe("when the id is invalid", () => {
-    //     //     it("should return the NOT found message", done => {
-    //     //         request(server)
-    //     //             .get("/user/gf")
-    //     //             .set("Accept", "application/json")
-    //     //             .expect("Content-Type", /json/)
-    //     //             .expect(200)
-    //     //             .end((err, res) => {
-    //     //                 expect(res.body.message).equals("User NOT Found!");
-    //     //                 done(err);
-    //     //             });
-    //     //     });
-    //     // });
-    // });
+    describe("GET /user/:id", () => {
+        describe("when the id is valid", () => {
+            it("should return the matching user", done => {
+                request(server)
+                    .get(`/user/${validID}`)
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .end((err, res) => {
+                        expect(res.body[0]).to.have.property("name", "Ada");
+                        expect(res.body[0]).to.have.property("pwd", "asd");
+                        done(err);
+                    });
+            });
+        });
+        // describe("when the id is invalid", () => {
+        //     it("should return the NOT found message", done => {
+        //         request(server)
+        //             .get("/user/gf")
+        //             .set("Accept", "application/json")
+        //             .expect("Content-Type", /json/)
+        //             .expect(200)
+        //             .end((err, res) => {
+        //                 expect(res.body.message).equals("User NOT Found!");
+        //                 done(err);
+        //             });
+        //     });
+        // });
+    });
     // describe("POST /user/register", () => {
     //     it("should return username can not be empty message", () => {
     //         const user = {
