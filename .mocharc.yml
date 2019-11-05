@@ -1,2 +1,5 @@
 file:
   - ./test/functional/api/authorTest.js
+  - ./test/functional/api/fairytaleTest.js
+  - ./test/functional/api/adminTest.js
+  - ./test/functional/api/userTest.js
