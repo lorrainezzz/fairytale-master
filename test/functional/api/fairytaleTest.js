@@ -173,31 +173,31 @@ describe("Fairytale", () => {
                         });
                 });
             });
-        //     describe("DELETE /fairytale/:id", () => {
-        //         describe("when the id is valid", () => {
-        //             it("should return confirmation message and update database", () => {
-        //                 request(server)
-        //                     .delete(`fairytale/${validID}`)
-        //                     .set("Accept", "application/json")
-        //                     .expect("Content-Type", /json/)
-        //                     .expect(200)
-        //                     .then(res => {
-        //                         expect(res.body.message).equals("Fairy tale Deleted!")
-        //                     })
-        //             })
-        //         })
-        //         describe("when the id is invalid", () => {
-        //             it("should return the NOT found message", () => {
-        //                 request(server)
-        //                     .delete("/fairytale/1er0202")
-        //                     .set("Accept", "application/json")
-        //                     .expect("Content-Type", /json/)
-        //                     .expect(200)
-        //                     .then(res => {
-        //                         expect(res.body.message).equals("Fairy tale NOT FOUND!")
-        //                     })
-        //             })
-        //         })
-        //     })
+            describe("DELETE /fairytale/:id", () => {
+                describe("when the id is valid", () => {
+                    it("should return confirmation message and update database", () => {
+                        request(server)
+                            .delete(`fairytale/${validID}`)
+                            .set("Accept", "application/json")
+                            .expect("Content-Type", /json/)
+                            .expect(200)
+                            .then(res => {
+                                expect(res.body.message).equals("Fairy tale Deleted!")
+                            })
+                    })
+                })
+                describe("when the id is invalid", () => {
+                    it("should return the NOT found message", () => {
+                        request(server)
+                            .delete("/fairytale/1er0202")
+                            .set("Accept", "application/json")
+                            .expect("Content-Type", /json/)
+                            .expect(200)
+                            .then(res => {
+                                expect(res.body.message).equals("Fairy tale NOT FOUND!")
+                            })
+                    })
+                })
+            })
         });
 });
