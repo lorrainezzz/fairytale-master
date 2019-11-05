@@ -113,54 +113,54 @@ describe("Author", () => {
         //     });
         // });
     });
-    // describe("POST /author", () => {
-    //     it("should return can not be empty message", () => {
-    //         const author = {
-    //             name: ""
-    //         }
-    //         return request(server)
-    //             .post("/author")
-    //             .send(author)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Name cannot be empty")
-    //             })
-    //     })
-    //     it("should return author already existed message", () => {
-    //         const author = {
-    //             name: "Ben"
-    //         }
-    //
-    //         return request(server)
-    //             .post("/author")
-    //             .send(author)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Name is existed")
-    //             })
-    //     });
-    //     it("should return confirmation message and update mongodb", () => {
-    //         const author = {
-    //             name: "Haley"
-    //         }
-    //
-    //         request(server)
-    //             .post("/author")
-    //             .send(author)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Author Added Successfully!");
-    //                 validID = res.body.data._id
-    //             })
-    //     });
-    //     after(() => {
-    //         request(server)
-    //             .get(`/author/${validID}`)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body[0]).to.have.property("name", "Haley")
-    //             })
-    //     })
-    // });
+    describe("POST /author", () => {
+        it("should return can not be empty message", () => {
+            const author = {
+                name: ""
+            }
+            return request(server)
+                .post("/author")
+                .send(author)
+                .then(res => {
+                    expect(res.body.message).equals("Name cannot be empty")
+                })
+        })
+        it("should return author already existed message", () => {
+            const author = {
+                name: "Ben"
+            }
+
+            return request(server)
+                .post("/author")
+                .send(author)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Name is existed")
+                })
+        });
+        it("should return confirmation message and update mongodb", () => {
+            const author = {
+                name: "Haley"
+            }
+
+            request(server)
+                .post("/author")
+                .send(author)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Author Added Successfully!");
+                    validID = res.body.data._id
+                })
+        });
+        after(() => {
+            request(server)
+                .get(`/author/${validID}`)
+                .expect(200)
+                .then(res => {
+                    expect(res.body[0]).to.have.property("name", "Haley")
+                })
+        })
+    });
     // describe("DELETE /author/:id", () => {
     //     describe("when the id is valid", () => {
     //         it("should return confirmation message and update database", () => {
