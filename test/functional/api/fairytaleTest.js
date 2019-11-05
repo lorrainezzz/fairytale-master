@@ -91,88 +91,88 @@ describe("Fairytale", () => {
                         });
                 });
             });
-        //     describe("GET /fairytale/:id", () => {
-        //         describe("when the id is valid", () => {
-        //             it("should return the matching fairytale", done => {
-        //                 request(server)
-        //                     .get(`/fairytale/${validID}`)
-        //                     .set("Accept", "application/json")
-        //                     .expect("Content-Type", /json/)
-        //                     .expect(200)
-        //                     .end((err, res) => {
-        //                         expect(res.body[0]).to.have.property("name", "Book");
-        //                         expect(res.body[0]).to.have.property("author", "Lay");
-        //                         done(err)
-        //                     })
-        //             })
-        //         });
-        //         describe("when the id is invalid", () => {
-        //             it("should return the NOT found message", done => {
-        //                 request(server)
-        //                     .get("/fairytale/1er202")
-        //                     .set("Accept", "application/json")
-        //                     .expect("Content-Type", /json/)
-        //                     .expect(200)
-        //                     .end((err, res) => {
-        //                         expect(res.body.message).equals("Fairy tale NOT Found!")
-        //                         done(err)
-        //                     })
-        //             })
-        //         })
-        //     });
-        //     describe("POST /fairytale", () => {
-        //         it("should return name or author cannot be empty message", () => {
-        //             const fairytale = {
-        //                 name: "",
-        //                 author: "Beth"
-        //             };
-        //
-        //             return request(server)
-        //                 .post("/fairytale")
-        //                 .send(fairytale)
-        //                 .then(res => {
-        //                     expect(res.body.message).equals("Fairy tale name or author cannot be empty");
-        //                 });
-        //         });
-        //         it("should return fairy tale has already existed message", () => {
-        //             const fairytale = {
-        //                 name: "Book",
-        //                 author: "Lay"
-        //             };
-        //
-        //             return request(server)
-        //                 .post("/fairytale")
-        //                 .send(fairytale)
-        //                 .expect(200)
-        //                 .then(res => {
-        //                     expect(res.body.message).equals("The fairytale is already exist");
-        //                 });
-        //         });
-        //         it("should return confirmation message and update mongodb", () => {
-        //             const fairytale = {
-        //                 name: "Water",
-        //                 author: "Ella"
-        //             };
-        //
-        //             request(server)
-        //                 .post("/fairytale")
-        //                 .send(fairytale)
-        //                 .expect(200)
-        //                 .then(res => {
-        //                     expect(res.body.message).equals("Fairytale Added Successfully!");
-        //                     validID = res.body.data._id;
-        //                 });
-        //         });
-        //         after(() => {
-        //             request(server)
-        //                 .get(`/fairytale/${validID}`)
-        //                 .expect(200)
-        //                 .then(res => {
-        //                     expect(res.body[0]).to.have.property("name", "Water");
-        //                     expect(res.body[0]).to.have.property("author", "Ella");
-        //                 });
-        //         });
-        //     });
+            // describe("GET /fairytale/:id", () => {
+            //     describe("when the id is valid", () => {
+            //         it("should return the matching fairytale", done => {
+            //             request(server)
+            //                 .get(`/fairytale/${validID}`)
+            //                 .set("Accept", "application/json")
+            //                 .expect("Content-Type", /json/)
+            //                 .expect(200)
+            //                 .end((err, res) => {
+            //                     expect(res.body.data).to.have.property("name", "Book");
+            //                     expect(res.body.data).to.have.property("author", "Lay");
+            //                     done(err)
+            //                 })
+            //         })
+            //     });
+            //     describe("when the id is invalid", () => {
+            //         it("should return the NOT found message", done => {
+            //             request(server)
+            //                 .get("/fairytale/1er202")
+            //                 .set("Accept", "application/json")
+            //                 .expect("Content-Type", /json/)
+            //                 .expect(200)
+            //                 .end((err, res) => {
+            //                     expect(res.body.message).equals("Fairy tale NOT Found!")
+            //                     done(err)
+            //                 })
+            //         })
+            //     })
+            // });
+            describe("POST /fairytale", () => {
+                it("should return name or author cannot be empty message", () => {
+                    const fairytale = {
+                        name: "",
+                        author: "Beth"
+                    };
+
+                    return request(server)
+                        .post("/fairytale")
+                        .send(fairytale)
+                        .then(res => {
+                            expect(res.body.message).equals("Fairy tale name or author cannot be empty");
+                        });
+                });
+                it("should return fairy tale has already existed message", () => {
+                    const fairytale = {
+                        name: "Book",
+                        author: "Lay"
+                    };
+
+                    return request(server)
+                        .post("/fairytale")
+                        .send(fairytale)
+                        .expect(200)
+                        .then(res => {
+                            expect(res.body.message).equals("The fairytale is already exist");
+                        });
+                });
+                it("should return confirmation message and update mongodb", () => {
+                    const fairytale = {
+                        name: "Water",
+                        author: "Ella"
+                    };
+
+                    request(server)
+                        .post("/fairytale")
+                        .send(fairytale)
+                        .expect(200)
+                        .then(res => {
+                            expect(res.body.message).equals("Fairytale Added Successfully!");
+                            validID = res.body.data._id;
+                        });
+                });
+                after(() => {
+                    request(server)
+                        .get(`/fairytale/${validID}`)
+                        .expect(200)
+                        .then(res => {
+                            expect(res.body[0]).to.have.property("name", "Water");
+                            expect(res.body[0]).to.have.property("author", "Ella");
+                        });
+                });
+            });
         //     describe("DELETE /fairytale/:id", () => {
         //         describe("when the id is valid", () => {
         //             it("should return confirmation message and update database", () => {
