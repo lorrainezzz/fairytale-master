@@ -129,7 +129,7 @@ describe("Admin", () => {
                 .post("/admin/register")
                 .send(admin)
                 .then(res => {
-                    expect(res.body.message).equals("Name cannot be empty");
+                    expect(res.body.message).equals("Name or password cannot be empty");
                 });
         });
         it("should return password can not be empty message", () => {
@@ -142,7 +142,7 @@ describe("Admin", () => {
                 .post("/admin/register")
                 .send(admin)
                 .then(res => {
-                    expect(res.body.message).equals("Password cannot be empty");
+                    expect(res.body.message).equals("Name or password cannot be empty");
                 });
         });
 
@@ -185,62 +185,62 @@ describe("Admin", () => {
                 });
         });
     });
-    //     describe("POST /admin/login", () => {
-    //         it("should return name or password can not be empty message", () => {
-    //             const admin = {
-    //                 name: "",
-    //                 pwd: "1122"
-    //             };
-    //
-    //             return request(server)
-    //                 .post("/admin/login")
-    //                 .send(admin)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Name or password cannot be empty");
-    //                 });
-    //         });
-    //
-    //         it("should return name is not exist message", () => {
-    //             const admin = {
-    //                 name: "Frank",
-    //                 pwd: "1122",
-    //             };
-    //
-    //             return request(server)
-    //                 .post("/admin/login")
-    //                 .send(admin)
-    //                 .expect(200)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Name is not existed");
-    //                 });
-    //         });
-    //         it("should return wrong password message", () => {
-    //             const admin = {
-    //                 name: "A001",
-    //                 pwd: "asdfgh",
-    //             };
-    //
-    //             return request(server)
-    //                 .post("/admin/login")
-    //                 .send(admin)
-    //                 .expect(200)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Password is wrong!!");
-    //                 });
-    //         });
-    //         it("should return confirmation message and update mongodb", () => {
-    //             const admin = {
-    //                 name: "A001",
-    //                 pwd: "123",
-    //             };
-    //
-    //             return request(server)
-    //                 .post("/admin/login")
-    //                 .send(admin)
-    //                 .expect(200)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Login successfully");
-    //                 });
-    //         });
-    //     });
+        describe("POST /admin/login", () => {
+            it("should return name or password can not be empty message", () => {
+                const admin = {
+                    name: "",
+                    pwd: "1122"
+                };
+
+                return request(server)
+                    .post("/admin/login")
+                    .send(admin)
+                    .then(res => {
+                        expect(res.body.message).equals("Name or password cannot be empty");
+                    });
+            });
+
+            it("should return name is not exist message", () => {
+                const admin = {
+                    name: "Frank",
+                    pwd: "1122",
+                };
+
+                return request(server)
+                    .post("/admin/login")
+                    .send(admin)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).equals("Name is not exist");
+                    });
+            });
+            it("should return wrong password message", () => {
+                const admin = {
+                    name: "A001",
+                    pwd: "asdfgh",
+                };
+
+                return request(server)
+                    .post("/admin/login")
+                    .send(admin)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).equals("Password is wrong!!");
+                    });
+            });
+            it("should return confirmation message and update mongodb", () => {
+                const admin = {
+                    name: "A001",
+                    pwd: "123",
+                };
+
+                return request(server)
+                    .post("/admin/login")
+                    .send(admin)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).equals("Login successfully");
+                    });
+            });
+        });
 });

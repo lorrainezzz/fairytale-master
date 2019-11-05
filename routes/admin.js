@@ -38,10 +38,10 @@ router.register = (req, res) => {
     var pwd = req.body.pwd;
 
     if(!name){
-        res.json({ message: 'Name cannot be empty'} );
+        res.json({ message: 'Name or password cannot be empty'} );
     }
     else if(!pwd){
-        res.json({ message: 'Password cannot be empty'} );
+        res.json({ message: 'Name or password cannot be empty'} );
     }
     else{
         Admin.findOne({name:name},function (err, info) {
@@ -69,10 +69,10 @@ router.login = (req, res) => {
     var pwd = req.body.pwd;
 
     if(!name){
-        res.json({ message: 'Name cannot be empty'} );
+        res.json({ message: 'Name or password cannot be empty'} );
     }
     else if(!pwd){
-        res.json({ message: 'Password cannot be empty'} );
+        res.json({ message: 'Name or password cannot be empty'} );
     }
     else{
         Admin.findOne({name:name},function (err, admin) {
@@ -82,6 +82,9 @@ router.login = (req, res) => {
                 } else {
                     res.json({message: 'Password is wrong!!'})
                 }
+            }
+            else{
+                res.json({message: 'Name is not exist'})
             }
         })
     }
