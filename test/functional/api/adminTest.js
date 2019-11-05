@@ -89,35 +89,35 @@ describe("Admin", () => {
                 });
         });
     });
-    // describe("GET /admin/:id", () => {
-    //     describe.only("when the id is valid", () => {
-    //         it("should return the matching admin", done => {
-    //             request(server)
-    //                 .get(`/admin/${validID}`)
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .end((err, res) => {
-    //                     expect(res.body.data).to.have.property("name", "A001");
-    //                     expect(res.body.data).to.have.property("pwd", "123");
-    //                     done(err);
-    //                 });
-    //         });
-    //     });
-    //     describe("when the id is invalid", () => {
-    //         it("should return the NOT found message", done => {
-    //             request(server)
-    //                 .get("/admin/0098")
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .end((err, req) => {
-    //                     expect(req.body.message).equals("Admin NOT Found!");
-    //                     done(err);
-    //                 });
-    //         });
-    //     });
-    // });
+    describe("GET /admin/:id", () => {
+        describe.only("when the id is valid", () => {
+            it("should return the matching admin", done => {
+                request(server)
+                    .get(`/admin/${validID}`)
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .end((err, res) => {
+                        expect(res.body[0]).to.have.property("name", "A001");
+                        expect(res.body[0]).to.have.property("pwd", "123");
+                        done(err);
+                    });
+            });
+        });
+        describe("when the id is invalid", () => {
+            it("should return the NOT found message", done => {
+                request(server)
+                    .get("/admin/0098")
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .end((err, req) => {
+                        expect(req.body.message).equals("Admin NOT Found!");
+                        done(err);
+                    });
+            });
+        });
+    });
     // describe("POST /admin/register", () => {
     //     it("should return name can not be empty message", () => {
     //         const admin = {

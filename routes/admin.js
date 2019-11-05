@@ -24,7 +24,7 @@ router.findAllAdmin = (req, res) => {
 
 router.findOne = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    Admin.find({ "id" : req.params.id },function(err, admin) {
+    Admin.find({ "_id" : req.params.id },function(err, admin) {
         if (err)
             res.send('Admin NOT Found!!');
         else
