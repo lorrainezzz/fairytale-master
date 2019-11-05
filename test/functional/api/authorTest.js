@@ -85,34 +85,34 @@ describe("Author", () => {
                 });
         });
     });
-    // describe("GET /author/:id", () => {
-    //     describe("when the id is valid", () => {
-    //         it("should return the matching author", done => {
-    //             request(server)
-    //                 .get(`/author/${validID}`)
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .end((err, res) => {
-    //                     expect(res.body[0]).to.have.property("name", "Ben");
-    //                     done(err);
-    //                 });
-    //         });
-    //     });
-    //     // describe("when the id is invalid", () => {
-    //     //     it("should return the NOT found message", done => {
-    //     //         request(server)
-    //     //             .get("/author/0098")
-    //     //             .set("Accept", "application/json")
-    //     //             .expect("Content-Type", /json/)
-    //     //             .expect(200)
-    //     //             .end((err, req) => {
-    //     //                 expect(req.body.message).equals("Author NOT Found!");
-    //     //                 done(err);
-    //     //             });
-    //     //     });
-    //     // });
-    // });
+    describe("GET /author/:id", () => {
+        describe("when the id is valid", () => {
+            it("should return the matching author", done => {
+                request(server)
+                    .get(`/author/${validID}`)
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .end((err, res) => {
+                        expect(res.body[0]).to.have.property("name", "Ben");
+                        done(err);
+                    });
+            });
+        });
+        // describe("when the id is invalid", () => {
+        //     it("should return the NOT found message", done => {
+        //         request(server)
+        //             .get("/author/0098")
+        //             .set("Accept", "application/json")
+        //             .expect("Content-Type", /json/)
+        //             .expect(200)
+        //             .end((err, req) => {
+        //                 expect(req.body.message).equals("Author NOT Found!");
+        //                 done(err);
+        //             });
+        //     });
+        // });
+    });
     // describe("POST /author", () => {
     //     it("should return can not be empty message", () => {
     //         const author = {
