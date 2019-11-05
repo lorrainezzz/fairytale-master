@@ -90,7 +90,7 @@ describe("Admin", () => {
         });
     });
     describe("GET /admin/:id", () => {
-        describe.only("when the id is valid", () => {
+        describe("when the id is valid", () => {
             it("should return the matching admin", done => {
                 request(server)
                     .get(`/admin/${validID}`)
@@ -118,73 +118,73 @@ describe("Admin", () => {
             });
         });
     });
-    // describe("POST /admin/register", () => {
-    //     it("should return name can not be empty message", () => {
-    //         const admin = {
-    //             name: "",
-    //             pwd: "789"
-    //         };
-    //
-    //         return request(server)
-    //             .post("/admin/register")
-    //             .send(admin)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Name cannot be empty");
-    //             });
-    //     });
-    //     it("should return password can not be empty message", () => {
-    //         const admin = {
-    //             name: "Kelly",
-    //             password: ""
-    //         };
-    //
-    //         return request(server)
-    //             .post("/admin/register")
-    //             .send(admin)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Password cannot be empty");
-    //             });
-    //     });
-    //
-    //     it("should return name occupied message", () => {
-    //         const admin = {
-    //             name: "A001",
-    //             pwd: "123"
-    //         };
-    //
-    //         return request(server)
-    //             .post("/admin/register")
-    //             .send(admin)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Name is existed");
-    //             });
-    //     });
-    //     it("should return confirmation message and update mongodb", () => {
-    //         const admin = {
-    //             name: "Kelly",
-    //             pwd: "789"
-    //         };
-    //
-    //         return request(server)
-    //             .post("/admin/register")
-    //             .send(admin)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Registered Successfully!!");
-    //                 validID1 = res.body.data._id;
-    //             });
-    //     });
-    //     after(() => {
-    //         return request(server)
-    //             .get(`/admin/${validID}`)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body[0]).to.have.property("name", "Kelly");
-    //                 expect(res.body[0]).to.have.property("pwd", "789");
-    //             });
-    //     });
-    // });
+    describe("POST /admin/register", () => {
+        it("should return name can not be empty message", () => {
+            const admin = {
+                name: "",
+                pwd: "789"
+            };
+
+            return request(server)
+                .post("/admin/register")
+                .send(admin)
+                .then(res => {
+                    expect(res.body.message).equals("Name cannot be empty");
+                });
+        });
+        it("should return password can not be empty message", () => {
+            const admin = {
+                name: "Kelly",
+                password: ""
+            };
+
+            return request(server)
+                .post("/admin/register")
+                .send(admin)
+                .then(res => {
+                    expect(res.body.message).equals("Password cannot be empty");
+                });
+        });
+
+        it("should return name occupied message", () => {
+            const admin = {
+                name: "A001",
+                pwd: "123"
+            };
+
+            return request(server)
+                .post("/admin/register")
+                .send(admin)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Name is existed");
+                });
+        });
+        it("should return confirmation message and update mongodb", () => {
+            const admin = {
+                name: "Kelly",
+                pwd: "789"
+            };
+
+            return request(server)
+                .post("/admin/register")
+                .send(admin)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Registered Successfully!!");
+                    validID = res.body.data._id;
+                });
+        });
+        after(() => {
+            request(server)
+                .get(`/admin/${validID}`)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.data).to.have.property("name", "Kelly");
+                    expect(res.body.data).to.have.property("pwd", "789");
+                });
+        });
+    });
     //     describe("POST /admin/login", () => {
     //         it("should return name or password can not be empty message", () => {
     //             const admin = {
