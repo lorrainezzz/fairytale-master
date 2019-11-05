@@ -161,30 +161,30 @@ describe("Author", () => {
                 })
         })
     });
-    // describe("DELETE /author/:id", () => {
-    //     describe("when the id is valid", () => {
-    //         it("should return confirmation message and update database", () => {
-    //             request(server)
-    //                 .delete(`author/${validID}`)
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Author Deleted!")
-    //                 })
-    //         })
-    //     })
-    //     describe("when the id is invalid", () => {
-    //         it("should return the NOT found message", () => {
-    //             request(server)
-    //                 .delete("/author/aerfa356")
-    //                 .set("Accept", "application/json")
-    //                 .expect("Content-Type", /json/)
-    //                 .expect(200)
-    //                 .then(res => {
-    //                     expect(res.body.message).equals("Author NOT Found!")
-    //                 })
-    //         })
-    //     })
-    // })
+    describe("DELETE /author/:id", () => {
+        describe("when the id is valid", () => {
+            it("should return confirmation message and update database", () => {
+                request(server)
+                    .delete(`author/${validID}`)
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).equals("Author Deleted!")
+                    })
+            })
+        })
+        describe("when the id is invalid", () => {
+            it("should return the NOT found message", () => {
+                request(server)
+                    .delete("/author/aerfa356")
+                    .set("Accept", "application/json")
+                    .expect("Content-Type", /json/)
+                    .expect(200)
+                    .then(res => {
+                        expect(res.body.message).equals("Author NOT Found!")
+                    })
+            })
+        })
+    })
 });
