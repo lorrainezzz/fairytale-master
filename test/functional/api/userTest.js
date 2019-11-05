@@ -181,63 +181,63 @@ describe("User",()=> {
                 });
         });
     });
-    // describe("POST /user/login", () => {
-    //     it("should return username or password can not be empty message", () => {
-    //         const user = {
-    //             name: "",
-    //             pwd: "asd",
-    //         };
-    //
-    //         return request(server)
-    //             .post("/user/login")
-    //             .send(user)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Username or password cannot be empty");
-    //             });
-    //     });
-    //
-    //     it("should return username is not exist message", () => {
-    //         const user = {
-    //             name: "Eve",
-    //             pwd: "zxcvbn",
-    //         };
-    //
-    //         return request(server)
-    //             .post("/user/login")
-    //             .send(user)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Username is not exist!!");
-    //             });
-    //     });
-    //     it("should return wrong password message", () => {
-    //         const user = {
-    //             name: "Ada",
-    //             pwd: "456",
-    //         };
-    //
-    //         return request(server)
-    //             .post("/user/login")
-    //             .send(user)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Password is wrong!!");
-    //             });
-    //     });
-    //     it("should return confirmation message and update mongodb", () => {
-    //         const user = {
-    //             name: "Ada",
-    //             pwd: "asd",
-    //         };
-    //
-    //         return request(server)
-    //             .post("/user/login")
-    //             .send(user)
-    //             .expect(200)
-    //             .then(res => {
-    //                 expect(res.body.message).equals("Login successfully");
-    //             });
-    //     });
-    // });
+    describe("POST /user/login", () => {
+        it("should return username or password can not be empty message", () => {
+            const user = {
+                name: "",
+                pwd: "asd",
+            };
+
+            return request(server)
+                .post("/user/login")
+                .send(user)
+                .then(res => {
+                    expect(res.body.message).equals("Username or password cannot be empty");
+                });
+        });
+
+        it("should return username is not exist message", () => {
+            const user = {
+                name: "Eve",
+                pwd: "zxcvbn",
+            };
+
+            return request(server)
+                .post("/user/login")
+                .send(user)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Username is not exist!!");
+                });
+        });
+        it("should return wrong password message", () => {
+            const user = {
+                name: "Ada",
+                pwd: "456",
+            };
+
+            return request(server)
+                .post("/user/login")
+                .send(user)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Password is wrong!!");
+                });
+        });
+        it("should return confirmation message and update mongodb", () => {
+            const user = {
+                name: "Ada",
+                pwd: "asd",
+            };
+
+            return request(server)
+                .post("/user/login")
+                .send(user)
+                .expect(200)
+                .then(res => {
+                    expect(res.body.message).equals("Login successfully");
+                });
+        });
+    });
 
 });
