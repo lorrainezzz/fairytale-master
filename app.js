@@ -75,6 +75,22 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
+dotenv.config()
+const uri = `${process.env.MONGO_URI}${process.env.MONGO_DB}`
+console.log(uri)
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+var db = mongoose.connection
+
+db.on('error', (err) => {
+    console.log('connection error', err)
+})
+db.once('open', function () {
+    console.log('connected to database')
+})
 
 
 
