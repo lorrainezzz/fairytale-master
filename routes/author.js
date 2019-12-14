@@ -3,10 +3,7 @@ let express = require('express');
 let router = express.Router();
 let Author = require('../models/author');
 
-let mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/fairytaledatabase');
-let db = mongoose.connection;
 db.on('error', function (err) {
     console.log('Unable to Connect to [ ' + db.name + ' ]', err);
 });

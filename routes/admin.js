@@ -2,16 +2,6 @@ let express = require('express');
 let router = express.Router();
 let Admin = require('../models/admin');
 
-let mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/fairytaledatabase');
-let db = mongoose.connection;
-db.on('error', function (err) {
-    console.log('Unable to Connect to [ ' + db.name + ' ]', err);
-});
-db.once('open', function () {
-    console.log('Successfully Connected to [ ' + db.name + ' ]');
-});
 
 router.findAllAdmin = (req, res) => {
     res.setHeader('Content-Type', 'application/json');

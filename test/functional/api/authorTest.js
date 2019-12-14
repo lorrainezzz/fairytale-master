@@ -48,7 +48,7 @@ describe("Author", () => {
       author = new Author()
       author.name = "Karry"
       await author.save()
-      author = await Author.findOne({name: "Ben"})
+      author = await Author.findOne({name: "Haley"})
       validID = author._id
 
 
