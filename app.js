@@ -74,7 +74,7 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
-
+const dotenv = require('dotenv')
 dotenv.config()
 const uri = `${process.env.MONGO_URI}${process.env.MONGO_DB}`
 console.log(uri)
