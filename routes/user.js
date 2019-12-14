@@ -2,9 +2,6 @@ let express = require('express');
 let router = express.Router();
 let User = require('../models/user');
 
-
-
-
 router.findAllUser = (req, res) => {
     res.setHeader('Content-Type', 'application/json');
     User.find(function(err, users) {

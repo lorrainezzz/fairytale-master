@@ -3,15 +3,6 @@ let express = require('express');
 let router = express.Router();
 let Author = require('../models/author');
 
-
-db.on('error', function (err) {
-    console.log('Unable to Connect to [ ' + db.name + ' ]', err);
-});
-db.once('open', function () {
-    console.log('Successfully Connected to [ ' + db.name + ' ]');
-});
-
-
 router.searchAuthor = (req,res) =>{
     const pattern = new RegExp('^.*'+req.body.id+'.*$','i');
     Author.find({"id": pattern} , function(err,cellback){
