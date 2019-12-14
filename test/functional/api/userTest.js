@@ -41,11 +41,11 @@ describe("User",()=> {
       await User.deleteMany({})
       let user = new User()
       user.name = "Ada"
-      user.pwd = "asd"
+      user.pwd = "asdfgh"
       await user.save()
       user = new User()
       user.name = "Bella"
-      user.pwd = "zxc"
+      user.pwd = "zxcvbn"
       await user.save()
       user = await User.findOne({name: "Ada"})
       validID = user._id

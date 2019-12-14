@@ -34,11 +34,11 @@ app.get('/fairytale/like', fairytale.findTotalLike);
 app.get('/fairytale/:id', fairytale.findOne);
 
 app.get('/user', user.findAllUser);
-app.get('/user/:uname', user.findOne);
+app.get('/user/:id', user.findOne);
 
 //app.get('/author/search/:aname', author.searchAuthor);
 app.get('/author', author.findAllAuthor);
-app.get('/author/:aname', author.findOne);
+app.get('/author/:id', author.findOne);
 
 app.get('/admin', admin.findAllAdmin);
 app.get('/admin/:id', admin.findOne);
